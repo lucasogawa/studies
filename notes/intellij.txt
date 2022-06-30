@@ -1,0 +1,14 @@
+Docs:
+	- Ctrl + Q
+Parameters: 
+	- Ctrl + P
+Open Method:
+	- Ctrl + B 
+Ident: 
+	- Ctrl + Alt + L
+Create a var:
+	- Ctrl + Alt + V
+Alter Tabs:
+	- Alt + RIGHT or LEFT
+Debug:
+	- Shift + F9

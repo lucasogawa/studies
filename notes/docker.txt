@@ -1,0 +1,54 @@
+- Images:
+	- List:
+		docker images
+	- Inspect:
+		docker inspect <IMAGE>
+	- History:
+		docker history <IMAGE>f
+
+- Containers:
+	- Download:
+  		docker pull <CONTAINER>
+
+	- Initialize:
+		docker run --help
+		docker run -d -p HOST:CONTAINER <CONTAINER>
+		docker run -it <CONTAINER> bash
+
+	- Exec:
+		docker exec -it <CONTAINER> bash
+
+	- Pause/Unpause:
+		docker pause <CONTAINER>
+		docker unpause <CONTAINER>
+
+	- Stop/Start:
+		docker stop <CONTAINER>
+		docker start <CONTAINER>
+
+	- List:
+		docker ps
+		docker ps -a 
+	
+	- Remove:
+		docker rm <CONTAINER_ID>
+		docker rm $(docker ps -qa)
+
+	- Ports:
+		docker port <CONTAINER>
+
+Dockerfile:
+	- Build:
+		- docker build -t <IMAGE_NAME> . 
+
+	- Exemple:
+		FROM
+		WORKDIR
+		COPY
+		RUN
+		ENTRYPOINT
+
+
+
+	docker-compose ps
+	docker logs -f <CONTAINER>
