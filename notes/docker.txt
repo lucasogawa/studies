@@ -1,19 +1,36 @@
-- Images:
+Images:
 	- List:
 		docker images
+
 	- Inspect:
 		docker inspect <IMAGE>
-	- History:
-		docker history <IMAGE>f
 
-- Containers:
+	- History:
+		docker history <IMAGE>
+
+	- Rename:
+		docker tag <OLD_IMAGE_NAME:VERSION> <NEW_IMAGE_NAME:VERSION> 
+
+	- Remove:
+		docker rmi <IMAGE_ID>
+		docker rmi $(docker image ls -qa) --force
+
+
+
+Containers:
 	- Download:
   		docker pull <CONTAINER>
 
 	- Initialize:
 		docker run --help
-		docker run -d -p HOST:CONTAINER <CONTAINER>
-		docker run -it <CONTAINER> bash
+		docker run <OPTIONS> <CONTAINER>
+		docker run <OPTIONS> <CONTAINER> bash
+			-d: deteach
+			-it: interactive
+			-p <HOST_PORT>:<CONTAINER_PORT>
+			-v <HOST_PATH>:<CONTAINER_PATH>
+			--mount sorce=<HOST_PATH>,target=<CONTAINER_PATH>
+			--tmpfs=<CONTAINER_PATH> 
 
 	- Exec:
 		docker exec -it <CONTAINER> bash
@@ -27,8 +44,9 @@
 		docker start <CONTAINER>
 
 	- List:
-		docker ps
-		docker ps -a 
+		docker ps <OPTIONS>
+			-a: stopped containers
+			-s: with volumes
 	
 	- Remove:
 		docker rm <CONTAINER_ID>
@@ -37,18 +55,48 @@
 	- Ports:
 		docker port <CONTAINER>
 
+	- Logs:
+		docker logs <OPTIONS> <CONTAINER>
+			-f: real time
+
+
+
+Volume:
+	- Create:
+		docker volume create <VOLUME_NAME>
+	
+	- Path in host:
+		/var/lib/docker/volumes/<VOLUME_NAME>
+
+
+
 Dockerfile:
 	- Build:
 		- docker build -t <IMAGE_NAME> . 
 
 	- Exemple:
-		FROM
-		WORKDIR
-		COPY
-		RUN
-		ENTRYPOINT
+		FROM <IMAGE:VERSION>
+		WORKDIR <PATH>
+		EXPOSE <PORT>
+		COPY . .
+		RUN <COMMAND>
+		ENTRYPOINT <COMMAND>
 
 
 
-	docker-compose ps
-	docker logs -f <CONTAINER>
+Docker Hub:
+	- Login:
+		docker login -u <DOCKER_USER>
+
+	- Push:
+		docker push <IMAGE_NAME:VERSION>
+
+
+
+Docker-compose:
+	List:
+		docker-compose ps
+	
+	Start/Stop:
+		docker-compose up -d
+		docker-compose stop
