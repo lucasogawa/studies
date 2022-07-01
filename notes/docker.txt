@@ -30,7 +30,9 @@ Containers:
 			-p <HOST_PORT>:<CONTAINER_PORT>
 			-v <HOST_PATH>:<CONTAINER_PATH>
 			--mount sorce=<HOST_PATH>,target=<CONTAINER_PATH>
-			--tmpfs=<CONTAINER_PATH> 
+			--tmpfs=<CONTAINER_PATH>
+			--name=<CONTAINER_NAME>
+			--network <NETWORK_NAME>
 
 	- Exec:
 		docker exec -it <CONTAINER> bash
@@ -59,6 +61,9 @@ Containers:
 		docker logs <OPTIONS> <CONTAINER>
 			-f: real time
 
+	- Inspect:
+		docker inspect <CONTAINER>
+
 
 
 Volume:
@@ -67,6 +72,19 @@ Volume:
 	
 	- Path in host:
 		/var/lib/docker/volumes/<VOLUME_NAME>
+
+
+
+Network:
+	- List:
+		docker network ls
+			bridge: container network
+			host: same as host
+			none: none interface
+
+	- Create:
+		docker network create <OPTIONS> <NETWORK_NAME>f
+			--driver <bridge/host/none>
 
 
 
@@ -94,9 +112,27 @@ Docker Hub:
 
 
 Docker-compose:
-	List:
+	- List:
 		docker-compose ps
 	
-	Start/Stop:
+	- Start/Stop:
 		docker-compose up -d
+		docker-compose down
 		docker-compose stop
+
+	Example:
+		version: "3.9"
+		services:
+			<SERVICE_NAME>:
+				image: <IMAGE>
+				container_name: <CONTAINER_NAME>
+				networks:
+					- <NETWORK_NAME>
+				ports:
+					- <HOST_PORT>:<CONTAINER_PORT>
+				depends_on:
+					- <CONTAINER_NAME>
+
+		networks:
+			<NETWORK_NAME>:
+				driver: <DRIVER>
