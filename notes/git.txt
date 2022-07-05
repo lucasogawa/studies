@@ -1,0 +1,40 @@
+Git:
+- git log --oneline
+- git log -p
+- git log --pretty="parametros de formatação"
+	- https://devhints.io/git-log
+
+- git init --bare
+- git remote add
+- git rebase
+
+- git checkout -- <arquivos>
+- git reset HEAD <arquivos>
+- git revert
+
+- git stash
+- git stash list
+- git stash apply <numero>
+- git stash drop <numero>
+- git stash pop
+
+- git checkout <branch>
+
+- git diff
+- git diff <branch1>..<branch2> || git diff <commit1>..<commit2>
+- git tag <tag_name>
+- git tag push <remote_name> <tag_name>
+
+================================================================================
+
+- git rebase -i HEAD~<qtd_commits>
+
+- git bisect
+- git blame
+- git show {hash}
+
+- Git Flow
+
+- git kraken
+
+- Hooks
