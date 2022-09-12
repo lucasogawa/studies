@@ -1,0 +1,67 @@
+Benefícios:
+    - tecnologias diferentes em projetos diferentes
+    - falha isolada
+    - facilidade e rapidez nos deploys
+
+Desvantagens:
+    - várias infraestruturas
+    - debug complexo
+    - comunicação entre os serviços
+    - diversas tecnologias
+    - monitoramento
+
+Tipos:
+    - Data Service: acesso somente a dados
+    - Business Service: aglomerado de Data Service, com regras de negócio
+    - Translation Service: responsável pela comunicação do sistema com algo externo
+    - Edge Service: responsável por fornecer determinadas informações para diferentes clientes 
+
+Serviço de Domínio (Data Service):
+    - Domain-Driven Design
+    - destinado a domínios
+
+Serviço de Negócio (Business Service):
+    - destinado a processos, consumir os Data Services (domínios)
+    - alto nível
+    - encapsular domínios relacionados
+
+Strangler Pattern:
+    - destinado a quebrar um monolíto
+    - isolando os dados ou os domínios
+
+Sidecar Pattern:
+    - destinado a códigos que vão ser compartilháveis, ou seja, utilizado em mais de um serviço
+
+API Gateway (Ponto único de entrada):
+    - destinado a autorizar e redirecionar as requests
+
+Process Aggregator Pattern:
+    - destinado a negócios, consumir os Business Service
+    - realiza chamadas para diversos serviços e monta um resposta coerente ao cenário
+    - cria um novo domínio
+
+Edge Patter:
+    - Gateway específico para determinado cliente, conforme a necessidade dele
+
+Single Service Database:
+    - um banco para cada serviço
+    - escalabilidade do serviço está relacionada ao banco
+
+Shared Service Database:
+    - um banco para vários serviços
+    - tratar como se o banco fosse exclusivo para cada serviço
+
+Command Query Responsability Segregation (CQRS):
+    - um modelo de escrita outro de leitura
+
+Asynchronous Eventing:
+    - permite que determinada ação não trave todo o processo
+    - a ação pode acontecer quando quiser
+
+Agregar Logs:
+    - centralizar os logs dos serviços 
+    - categorizar os logs (warning, error, info)
+    - ser rastreáveis - Trace ID
+
+Application Performance Monitoring (APM):
+    - monitoramento dos logs, para validar a saúde dos serviços

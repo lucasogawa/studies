@@ -1,0 +1,15 @@
+Propósito:
+    Manter consistência dos dados
+
+Coordenar:
+    - sincronia através de logs
+
+Coreografar:
+    - um serviço tem conhecimento do outro
+
+Orquestrar:
+    - um único serviço tem o conhecimento dos outros
+
+Atomic, Consistent, Isolated and Durable (ACID)
+
+Two-Phase Commit (2PC)
