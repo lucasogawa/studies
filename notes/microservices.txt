@@ -65,3 +65,78 @@ Agregar Logs:
 
 Application Performance Monitoring (APM):
     - monitoramento dos logs, para validar a saúde dos serviços
+
+Host:
+    - definir se vão ser utilizados Cloud com Containers ou Virtual Machines (VMs)
+
+Repositório para versionamento de código
+    - definir vários repositórios ou monorepositórios
+
+Continuous Integration/Continuous Delivery (CI/CD)
+
+Padronização:
+    - logs(formato e destino)
+    - health checks
+    - monitoramento
+    - configurações e secrets
+    - template de container
+
+Tipos do comunicação síncrona:
+    - HTTP
+    - gRPC
+    - personalizado
+
+Comunicação síncrona
+
+Falhas em comunicação síncrona:
+    - Circuit Breaker
+    - Cache
+
+Falhas em comunicação assíncrona:
+    - retry
+    - registro de filas mortas
+    - receber mensagem for de ordem de fluxo
+    - receber mensagem duplicada
+
+Service Discovery:
+    - DNS
+
+Segurança Geral:
+    - HTTPs
+    - Criptografia
+    - Anonimização
+
+Autenticação:
+    - Basic HTTP (usar e password)
+    - Tokens (JWT)
+    - OAuth
+    - OpenID Connect
+
+Autorização:
+    - Acess Control List (ACL): baseado em permissões
+    - Role-Based Acess Controll (RBAC): baseado em perfil
+    - On Behalf Of: requisição entre microsserviços baseada em um usuário
+
+Segurança de Rede:
+    - API Gateway
+    - Firewall
+
+Defense in Depth
+
+Diferentes ambientes:
+    - desenvolvimento
+    - QA
+    - homologação
+    - produção
+
+Configurações Parametrizáveis:
+    - quantidade de recurso
+    - localização
+    - destino de logs
+    - dependências
+    - dados de acesso
+
+Estratégias de Releases:
+    - Rolling Upgrade: substitui um pod de cada vez
+    - Blue-Green: substitui o cluster inteiro
+    - Feature Toggle: opção de ativar e desativar a nova funcionalidade
