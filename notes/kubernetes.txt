@@ -1,0 +1,114 @@
+create cluster:
+    minikube start --vm-driver=virtualbox
+
+nodes:
+    kubectl get nodes <params>
+        -o wide
+
+config-map:
+    get:
+        kubectl get configMap
+    describe:
+        kubectl describe configMap <config-map-name>
+
+pod:
+    create: 
+        kubectl run <pod-name> --image:<image-name>
+    get:
+        kubectl get pods <params>
+            --watch
+    describe:
+        kubectl describe pod <pod-name>
+    edit:
+        kubectl edit pod <pod-name>
+    delete:
+        kubectl delete pod <params>
+            <pod-name>
+            --all
+    exec:
+        kubectl exec <params-1> <pod-name> <params-2> 
+            params-1:
+                -it
+            params-2:
+                --bash
+
+pod with yaml:
+    apply:
+        kubectl apply -f <file.yaml>
+    delete:
+        kubectl delete -f <file.yaml>
+
+pod yaml:
+    apiversion: v1
+    kind: Pod
+    metadata:
+        name: <pod-name>
+        labels:
+            <label-name>: <label-value>
+    spec:
+        containers:
+            - name: <container-name>
+              image: <image-name>
+              ports:
+                - containerPort: <port>
+              env:
+                - name: <env-name>
+                  value: <env-value>
+              env:
+                - name: <env-name>
+                  valueFrom:
+                    configMapKeyRef:
+                      name: <config-map-name>
+                      key: <config-map-env-name>
+              envFrom:
+                - configMapRef:
+                    name: <config-map-name>
+
+service yaml:
+    apiversion: v1
+    kind: Service
+    metadata:
+        name: <service-name>
+    spec:
+        type: ClusterIP
+    selector:
+        <label-name>: <label-value>
+    ports:
+        - port: <port>
+          targetPort: <target-port>
+
+node port yaml:
+    apiversion: v1
+    kind: Service
+    metadata:
+        name: <node-port-name>
+    spec:
+        type: NodePort
+    selector:
+        <label-name>: <label-value>
+    ports:
+        - port: <port>
+          targetPort: <target-port>
+          nodePort: <node-port>
+
+load balancer yaml:
+    apiversion: v1
+    kind: Service
+    metadata:
+        name: <load-balancer-name>
+    spec:
+        type: LoadBalancer
+    selector:
+        <label-name>: <label-value>
+    ports:
+        - port: <port>
+          targetPort: <target-port>
+          nodePort: <node-port>
+
+config-map yaml:
+    apiversion: v1
+    kind: ConfigMap
+    metadata:
+        name: <config-map-name>
+    data:
+        <env-name>: <env-value>
